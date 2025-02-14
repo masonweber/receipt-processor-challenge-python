@@ -1,6 +1,11 @@
 Set up docker container:
-    In the receipt folder containing manage.py
-    "docker build -t django-docker ." OR "docker compose up --build"
+    In the receipt folder containing manage.py:
+        Create a file .env for four environment variables.
+            DJANGO_SECRET_KEY={generate your own secret key here surrounded with single quotes}
+            DEBUG=True
+            DJANGO_LOGLEVEL=info
+            DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1
+        Run "docker build -t django-docker ." OR "docker compose up --build"
 
 Start webservice:
     Deploy docker container, port 8000 is open on localhost for image
