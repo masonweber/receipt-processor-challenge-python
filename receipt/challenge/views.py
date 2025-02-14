@@ -8,11 +8,9 @@ from challenge.process import ingest, score
 from openapi_core import OpenAPI
 from openapi_core.contrib.requests import RequestsOpenAPIRequest
 
-openapi = OpenAPI.from_file_path('api.yml')
+openapi = OpenAPI.from_file_path('request_validate.yml')
 
 # Create your views here.
-def index(request):
-    return HttpResponse("Hello, world. You're at the challenge index.")
 
 def process(request):  
 
@@ -51,5 +49,3 @@ def convert_request(request):
     temp = Request(request.method, request.scheme + "://" + request.get_host() + request.path, request.headers, request.FILES, request.body, None, None, request.COOKIES, None, None)
     return RequestsOpenAPIRequest(temp.prepare())
 
-def create_error(description):
-    error = HttpResponse(description, content_type="text/plain", status=400)
